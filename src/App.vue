@@ -1,47 +1,75 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
+<script>
+import AboutMe from "@/components/AboutMe.vue";
+import Contact from "@/components/Contact.vue";
+import Skills from "@/components/Skills.vue";
+
+export default {
+  components: {
+    AboutMe,
+    Contact,
+    Skills
+  },
+  data() {
+    return {
+      current: 'AboutMe',
+    }
+  },
+  methods: {
+    toggleComponent(cName) {
+      this.current = cName
+    }
+  }
+}
+
+</script>
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <div id="navDiv">
+      <div class="d-flex justify-content-between shadow">
+        <div>
+          <button class="navButton p-3" @click="toggleComponent('AboutMe')">About Me</button>
+          <button class="navButton p-3" @click="toggleComponent('Skills')">Skills and Experience</button>
+        </div>
+        <div>
+          <p class="p-3">Last updated on: {{new Date()}}</p>
+        </div>
+      </div>
     </div>
   </header>
-
   <main>
-    <TheWelcome />
+    <component :is="current" />
   </main>
+  <footer class="shadow">
+    <div class="p-3">
+      <p>test</p>
+    </div>
+  </footer>
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+#navDiv {
+  background-color: black;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.navButton {
+  font-size: 1.6rem;
+  background-color: transparent;
+  border: transparent;
+  font-weight: bold;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+p {
+  font-size: 0.8rem;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+footer {
+  background-color: ghostwhite;
+  height: 9rem;
 }
 </style>
