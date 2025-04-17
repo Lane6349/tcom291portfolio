@@ -54,7 +54,8 @@ export default {
 
 <style scoped>
 #navDiv {
-  background-color: black;
+  background-color: rgb(50, 50, 50);
+  color: white;
 }
 
 .navButton {
@@ -62,6 +63,7 @@ export default {
   background-color: transparent;
   border: transparent;
   font-weight: bold;
+  color: white;
 }
 
 p {
@@ -69,7 +71,7 @@ p {
 }
 
 footer {
-  background-color: ghostwhite;
+  background-color: rgb(50, 50, 50);
   height: 9rem;
 }
 </style>
