@@ -38,7 +38,7 @@ export default {
           <button class="navButton p-3" @click="toggleComponent('AboutMe')">About Me</button>
         </div>
         <div>
-          <p class="p-3">Last updated on: April 20th, 2025}</p>
+          <p class="p-3">Last updated on: April 20th, 2025</p>
         </div>
       </div>
     </div>
