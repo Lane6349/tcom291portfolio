@@ -5,16 +5,16 @@
 import AboutMe from "@/components/AboutMe.vue";
 import Contact from "@/components/Contact.vue";
 import Skills from "@/components/Skills.vue";
+import Home from "@/components/Home.vue";
 
 export default {
   components: {
+    Home,
     AboutMe,
-    Contact,
-    Skills
   },
   data() {
     return {
-      current: 'AboutMe',
+      current: 'Home',
     }
   },
   methods: {
@@ -29,27 +29,23 @@ export default {
   <header>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  </header>
+  <main>
     <div id="navDiv">
       <div class="d-flex justify-content-between shadow">
         <div>
+          <button class="navButton p-3" @click="toggleComponent('Home')">Home</button>
           <button class="navButton p-3" @click="toggleComponent('AboutMe')">About Me</button>
-          <button class="navButton p-3" @click="toggleComponent('Skills')">Skills and Experience</button>
         </div>
         <div>
-          <p class="p-3">Last updated on: {{new Date()}}</p>
+          <p class="p-3">Last updated on: April 20th, 2025}</p>
         </div>
       </div>
     </div>
-  </header>
-  <main>
-    <component :is="current" />
+    <transition name="fade" mode="out-in">
+      <component :is="current" />
+    </transition>
   </main>
-  <footer class="shadow">
-    <div class="p-3">
-      <p>test</p>
-    </div>
-  </footer>
-
 </template>
 
 <style scoped>
@@ -70,8 +66,13 @@ p {
   font-size: 0.8rem;
 }
 
-footer {
-  background-color: rgb(50, 50, 50);
-  height: 9rem;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 </style>
